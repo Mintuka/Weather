@@ -11,9 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+#bg{
+  background-image: url('img/clouds.gif');
+}
 #daily_forecast{
   overflow: auto; 
   white-space: nowrap; 
   background: black;
+}
+
+.daily{
+  display: inline-block; 
+  box-shadow: 0 0 2px white; 
+  width: 10vw;
+  color: white;
 }
