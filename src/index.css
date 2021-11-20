@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#daily_forecast{
+  overflow: auto; 
+  white-space: nowrap; 
+  background: black;
+}
