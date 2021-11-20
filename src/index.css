@@ -13,7 +13,15 @@ code {
 }
 #bg{
   background-image: url('img/clouds.gif');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover
 }
+
+#hours_container{
+  background: gray;
+}
+
 #daily_forecast{
   overflow: auto; 
   white-space: nowrap; 
