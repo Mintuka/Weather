@@ -1,10 +1,30 @@
+import {UserContext,Url} from "./App"
+
 function Hour(props){
+
     return(
-        <div id={`hr_block_${props.id}`} className="col-2">
-            <strong id={`hr_${props.id}`} class="d-block">temp</strong>
-            <img id={`icon_${props.id}`} alt="icon"/>
-            <strong id={`tm_${props.id}`} class="d-block mb-2">Now</strong>
-        </div>
+        <UserContext.Consumer>
+            {   
+                (data) => {
+                    return(
+                        <div className="hr_block col-2 ">
+                            <strong id={`hr_${props.id}`} className="d-block">{data ? data.hourly[props.id].temp : "temperature"}<sup>o</sup>C</strong>
+                            <Url.Consumer>
+                                {
+                                    iconUrl => {
+                                        return(
+                                            <img id={`icon_${props.id}`} src={iconUrl + data.hourly[props.id].weather[0].icon + ".png"} alt="icon"/>
+                                        )
+                                    }
+                                }
+                            </Url.Consumer>
+                            <strong id={`tm_${props.id}`} className="d-block mb-2">{new Date().getHours() + Number(props.id)}UTC</strong>
+                        </div>
+                    )
+
+                }
+            }
+        </UserContext.Consumer>
     )
 }
 

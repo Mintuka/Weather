@@ -1,13 +1,12 @@
-import { useState } from "react";
 import Daily from "./Daily";
 
 function DailysContainer(){
-    const [days,setDays] = useState([1,2,3,4,5,6,7])
+    const days = [0,1,2,3,4,5,6];
 
     return(
         <div id="daily_forecast"  className="card_body">
             {
-                days.map(ele => <Daily id={ele}/>)
+                days.map(ele => <Daily key={ele} id={ele}/>)
             }
         </div>
     )

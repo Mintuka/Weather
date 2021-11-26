@@ -19,7 +19,17 @@ code {
 }
 
 #hours_container{
-  background: gray;
+  background: black;
+}
+
+.hr_block{
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  border-right: 1px solid rgb(92, 89, 89);
+}
+
+.hr_block:last-child{
+  border-right: none;
 }
 
 #daily_forecast{
@@ -33,4 +43,16 @@ code {
   box-shadow: 0 0 2px white; 
   width: 10vw;
   color: white;
+  position: relative;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 15px;
+}
+
+#today{
+  position: absolute;
+  top: -15px;
+  left: 6em;
+  padding: 3px 5px;
+  background: orange;
+  border-radius: 20px;
 }
