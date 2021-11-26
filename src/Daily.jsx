@@ -6,7 +6,6 @@ function Daily(props){
     
     const day = (val) => {
         const dayNow = 4;
-        console.log("Hey-",val)
 
         if((val + dayNow) > 6)
             return val + dayNow - 7; 
@@ -19,7 +18,6 @@ function Daily(props){
         <UserContext.Consumer>
             {
                 (data) => {
-                    console.log(day(Number(props.id)),"hmmm")
                     return(
                         <div className="m-3 p-3 text-center daily" >
                             <p className="mb-1"><strong id={`day_${props.id}`}>{days[day(Number(props.id))]}</strong></p>

@@ -28,7 +28,7 @@ export function App() {
   return (
     <div className="container my-5 ">
       <div className="row justify-content-center text-white">
-        <div className="col-md-8">
+        <div className="col-md-8 black">
           <UserContext.Provider value={data}>
             <Forecast/>
             <Url.Provider value = {iconUrl}>

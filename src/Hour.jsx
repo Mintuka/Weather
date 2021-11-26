@@ -7,8 +7,8 @@ function Hour(props){
             {   
                 (data) => {
                     return(
-                        <div className="hr_block col-2 ">
-                            <strong id={`hr_${props.id}`} className="d-block">{data ? data.hourly[props.id].temp : "temperature"}<sup>o</sup>C</strong>
+                        <div className="hr_block col">
+                            <strong id={`hr_${props.id}`} className="d-block">{data ? Math.floor(data.hourly[props.id].temp) : "temperature"}<sup>o</sup>C</strong>
                             <Url.Consumer>
                                 {
                                     iconUrl => {
@@ -18,7 +18,7 @@ function Hour(props){
                                     }
                                 }
                             </Url.Consumer>
-                            <strong id={`tm_${props.id}`} className="d-block mb-2">{new Date().getHours() + Number(props.id)}UTC</strong>
+                            <strong id={`tm_${props.id}`} className="d-block mb-2">{new Date().getHours() + Number(props.id)}PM</strong>
                         </div>
                     )
 
