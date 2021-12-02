@@ -1,11 +1,22 @@
+import { useEffect } from "react";
 import {UserContext,Url} from "./App"
 
 function Daily(props){
 
     const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    
+
+    //handle events when each daily component is clicked 
+    const handleDaily = (value) =>{
+        let current = document.getElementsByClassName("current");
+        for(let val of current)
+            val.className = "m-3 p-3 text-center dailyWeather";
+
+        let clicked = document.getElementById(`daily_${value}`);
+        clicked.className = "m-3 p-3 text-center current";
+    }
+
     const day = (val) => {
-        const dayNow = 4;
+        const dayNow = new Date().getDay();
 
         if((val + dayNow) > 6)
             return val + dayNow - 7; 
@@ -14,24 +25,27 @@ function Daily(props){
         }
     }
 
+    useEffect(() => {
+        document.getElementById("daily_0").className = "m-3 p-3 text-center current";
+    },[])
     return(
         <UserContext.Consumer>
             {
                 (data) => {
                     return(
-                        <div className="m-3 p-3 text-center daily" >
+                        <div id={`daily_${props.id}`} className="m-3 p-3 text-center dailyWeather" onClick={() => handleDaily(props.id)}>
                             <p className="mb-1"><strong id={`day_${props.id}`}>{days[day(Number(props.id))]}</strong></p>
                             <Url.Consumer>
                                 {
                                     iconUrl => {
                                         return(
-                                            <img id={`icon_day_${props.id}`} className="mb-2" src={iconUrl + data.daily[props.id].weather[0].icon + ".png"} alt="icon"/>
+                                           data ? <img id={`icon_day_${props.id}`} className="mb-2" src={iconUrl + data.daily[props.id].weather[0].icon + ".png"} alt="icon"/> : <h3>img</h3>
                                         )
                                     }
                                 }
                             </Url.Consumer>
                             <p id={`main-${props.id}`} className="mb-3">{data ? data.daily[props.id].weather[0].main : "main"}</p>
-                            <p id={`temp-${props.id}`} className="mb-2">{data ? data.daily[props.id].temp.day : "temperature"}</p>
+                            <p id={`temp-${props.id}`} className="mb-2">{data ? data.daily[props.id].temp.day : "temp"}</p>
                             {props.id === 0 ? <h6 id="today">Today</h6> : null}
                         </div>
                     )
@@ -39,7 +53,6 @@ function Daily(props){
             }
         </UserContext.Consumer>
     )
-
 }
 
 export default Daily;
