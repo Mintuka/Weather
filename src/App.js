@@ -1,7 +1,7 @@
 import Forecast from "./Forecast";
 import HoursContainer from "./HoursContainer"
-import DailysContainer from "./DailysContainer"
-import { createContext } from "react";
+import {DailysContainer} from "./DailysContainer"
+import { createContext} from "react";
 import useFetch from "./useFetch";
 
 export const UserContext = createContext();
@@ -18,7 +18,6 @@ export function App() {
   
   const [data] = useFetch(query);
   const iconUrl = "http://openweathermap.org/img/wn/";
-
 
   if(!data)
     return (
