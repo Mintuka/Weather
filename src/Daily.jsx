@@ -7,12 +7,15 @@ function Daily(props){
 
     //handle events when each daily component is clicked 
     const handleDaily = (value) =>{
+        //off the previously clicked DailyComponent
         let current = document.getElementsByClassName("current");
         for(let val of current)
             val.className = "m-3 p-3 text-center dailyWeather";
-
+        //on the clicked DailyComponent
         let clicked = document.getElementById(`daily_${value}`);
         clicked.className = "m-3 p-3 text-center current";
+
+        props.setSelectedDate(value);
     }
 
     const day = (val) => {

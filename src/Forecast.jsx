@@ -6,8 +6,9 @@ function Forecast(props){
         <UserContext.Consumer>
             {
                 data => {
-                    if(props.id === 0)
-                        var current = {
+                    var current = {};
+                    if(props.selectedDate === 0)
+                        current = {
                             description : data ? data.current.weather[0].description : "description",
                             icon: data ? data.current.weather[0].icon : "icon",
                             temp : data ? data.current.temp : 20,
@@ -17,11 +18,11 @@ function Forecast(props){
                         }
                     else{
                         current = {
-                            description : data ? data.current.weather[0].description : "descr",
-                            icon: data ? data.current.weather[0].icon : "icon",
-                            temp : data ? data.current.temp : 25,
-                            pressure : data ? data.current.pressure : 105,
-                            humidity : data ? data.current.humidity : 35,
+                            description : data ? data.daily[props.selectedDate].weather[0].description : "descr",
+                            icon: data ? data.daily[props.selectedDate].weather[0].icon : "icon",
+                            temp : data ? data.daily[props.selectedDate].temp.day : 25,
+                            pressure : data ? data.daily[props.selectedDate].pressure : 105,
+                            humidity : data ? data.daily[props.selectedDate].humidity : 35,
                             name : "Addis Ababa"
                         }
                     }

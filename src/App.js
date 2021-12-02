@@ -1,7 +1,7 @@
 import Forecast from "./Forecast";
 import HoursContainer from "./HoursContainer"
 import {DailysContainer} from "./DailysContainer"
-import { createContext} from "react";
+import { createContext,useState} from "react";
 import useFetch from "./useFetch";
 
 export const UserContext = createContext();
@@ -18,6 +18,7 @@ export function App() {
   
   const [data] = useFetch(query);
   const iconUrl = "http://openweathermap.org/img/wn/";
+  const [selectedDate,setSelectedDate] = useState(0);
 
   if(!data)
     return (
@@ -29,10 +30,10 @@ export function App() {
       <div className="row justify-content-center text-white">
         <div className="col-md-8 black">
           <UserContext.Provider value={data}>
-            <Forecast/>
+            <Forecast selectedDate={selectedDate}/>
             <Url.Provider value = {iconUrl}>
               <HoursContainer/>
-              <DailysContainer/>
+              <DailysContainer setSelectedDate={setSelectedDate}/>
             </Url.Provider>
           </UserContext.Provider>
         </div>

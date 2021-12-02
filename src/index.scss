@@ -99,12 +99,11 @@ code {
   }
 
   .current{
-    @include daily(12vw, black);
+    @include daily(12vw, yellowgreen);
     #today{
       @include today(8em,6px,8px);
     }
     font-size: 1.5rem;
-    background: orange;
   }  
 }
 
