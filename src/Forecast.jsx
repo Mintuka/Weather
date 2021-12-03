@@ -5,7 +5,6 @@ import {date,dataFetched,days,iconUrl} from "./useFunctions"
 function Forecast(props){
     let time = new Date();
     const [dailyColor,setDailyColor] = useState("orangered");
-
   
     useEffect(() => {
         if(props.selectedDate > 0){
@@ -31,7 +30,7 @@ function Forecast(props){
                                 <p id="update_info"><small>updated an hour ago</small> </p>
                                 <div className="info_container">
                                     <div className="flex_container">
-                                    <img src={iconUrl + current.icon + ".png"} alt="icon"/>
+                                    <img id="forecast_img" src={iconUrl + current.icon + ".png"} alt="icon"/>
                                     <p id="temp" className="display-3 mb-1">{<b>{Math.floor(current.temp)}</b>}<sup>o</sup><small>C</small></p>
                                     </div>
                                     <div className="flex_container">

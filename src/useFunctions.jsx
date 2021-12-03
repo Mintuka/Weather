@@ -22,12 +22,13 @@ export const day = (val) => {
 }
 
 export const date = (days,selectedDate,time) =>{
-    let dayVal = days[day(selectedDate)];
-    let dateVal = time.getDate(); if(dateVal < 10) dateVal = "0"+dateVal;
-    let hourVal = time.getDate(); if(hourVal < 10) hourVal = "0"+hourVal;
-    let minuteVal = time.getMinutes(); if(minuteVal < 10) minuteVal = "0"+minuteVal;
+    let dayVal      =   days[day(selectedDate)];
+    let dateVal     =   time.getDate();     if(dateVal < 10)    dateVal     = "0"+dateVal;
+    let hourVal     =   time.getHours();    if(hourVal < 10)    hourVal     = "0"+hourVal;
+    let minuteVal   =   time.getMinutes();  if(minuteVal < 10)  minuteVal   = "0"+minuteVal;
+    let modeVal     =   time.getUTCHours(); (modeVal < 15) ? modeVal = " am" : modeVal = " pm";
     if(selectedDate === 0)
-        return dayVal.slice(0,3) + " " + dateVal +", "+ hourVal + ":" + minuteVal +  "Pm"
+        return dayVal.slice(0,3) + " " + dateVal +", "+ hourVal + ":" + minuteVal +  modeVal;
     else return dayVal;
 }
 
