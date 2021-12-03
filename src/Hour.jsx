@@ -1,4 +1,5 @@
-import {UserContext,Url} from "./App"
+import {UserContext} from "./App"
+import {iconUrl} from "./useFunctions"
 
 function Hour(props){
 
@@ -8,17 +9,13 @@ function Hour(props){
                 (data) => {
                     return(
                         <div className="hr_block col">
-                            <strong id={`hr_${props.id}`} className="d-block">{data ? Math.floor(data.hourly[props.id].temp) : "temp"}<sup>o</sup>C</strong>
-                            <Url.Consumer>
-                                {
-                                    iconUrl => {
-                                        return(
-                                            data ? <img id={`icon_${props.id}`} src={iconUrl + data.hourly[props.id].weather[0].icon + ".png"} alt="icon"/> : <h3>img</h3>
-                                        )
-                                    }
-                                }
-                            </Url.Consumer>
-                            <strong id={`tm_${props.id}`} className="d-block mb-2">{new Date().getHours() + Number(props.id)}PM</strong>
+                            <strong id={`hr_${props.id}`} className="d-block">
+                                {Math.floor(data.hourly[props.id].temp)}<sup>o</sup>C
+                            </strong>
+                            <img id={`icon_${props.id}`} src={iconUrl + data.hourly[props.id].weather[0].icon + ".png"} alt="icon"/>
+                            <strong id={`tm_${props.id}`} className="d-block mb-2">
+                                {new Date().getHours() + Number(props.id)}PM
+                            </strong>
                         </div>
                     )
                 }
